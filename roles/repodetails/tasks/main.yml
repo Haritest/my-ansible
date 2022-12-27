@@ -1,0 +1,25 @@
+---
+# tasks file for repodetails
+   - set_fact:
+       repo_var: repo_var.yml
+ 
+   - name: Get the repo Details
+     shell:
+        gh repo list {{ repo_org }} -L 100 --json name | jq '.[].name' | tr -d '"' > vars/{{ repo_var }}
+
+   - name: Modifying to var format
+     shell:
+        "sed -i 's/^/  - /' vars/{{ repo_var }}"
+
+   - name: Giving var name
+     shell:
+        "sed -i '1irole:' vars/{{ repo_var }}"
+ 
+   - name: Include repos list
+     include_vars:
+       file: "{{ repo_var }}"
+     register: repos_vars_output
+   
+   - name: debug 
+     debug:
+       var: repos_vars_output

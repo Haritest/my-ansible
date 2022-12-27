@@ -1,0 +1,9 @@
+---
+ - name: get gitrepo
+   hosts: localhost
+   connection: local
+   roles:
+     - role: repodetails
+     - role: includevar-debug
+ 
+

@@ -3,14 +3,5 @@
   hosts: localhost
   connection: local
   become: true
-  tasks:
-    - name: Cronjob
-      cron:
-        name: Find the Memory details
-        minute: "22"
-        hour: "10"
-        weekday: "1"
-        user: root
-        job: free -m >> /home/ubuntu/mem_usage
-        #cron_file: disk_usage
-        state: present
+  roles:
+    - role: cronjobs

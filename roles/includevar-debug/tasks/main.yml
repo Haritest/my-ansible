@@ -1,0 +1,6 @@
+---
+# tasks file for repodetails
+   
+   - name: debug 
+     debug:
+       var: repos_vars_output
