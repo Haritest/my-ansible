@@ -1,0 +1,37 @@
+---
+# tasks file for repodetails
+- name: find all txt files in /tmp 
+  shell: 
+    "find /tmp -name *.txt" 
+  register: find_output
+  debug:
+    var: find_output
+
+- name: stdout lines
+  debug:
+    var: find_output.stdout_lines
+
+
+- name: Ensure pwgen is installed
+  apt:
+     name: pwgen
+     state: present
+     update_cache: True
+- name: Generate password
+  shell: pwgen -N 1 -s 30
+  register: mypass
+- name: Print the generated password
+  debug:
+  msg: "The password is {{ mypass }}"
+
+- name: generate PSK
+  shell: openssl rand -base64 48
+  register: psk
+  delegate_to: 127.0.0.1
+  run_once: true
+
+- set_fact: 
+    psk={{ psk.stdout }}
+
+- debug: var=psk
+  run_once: true

@@ -1,6 +1,10 @@
 ---
 # tasks file for repodetails
-   
-   - name: debug 
-     debug:
-       var: repos_vars_output
+
+- name: debug 
+  debug:
+    var: repos_vars_output
+
+- name: Print the value of a variable
+  debug:
+    msg: "{{ greetings }}, Welcome to {{ site }}."

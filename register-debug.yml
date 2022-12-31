@@ -1,0 +1,7 @@
+---
+- name: register-debug
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - role: register-debug
