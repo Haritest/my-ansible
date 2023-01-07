@@ -1,0 +1,9 @@
+---
+- name: host-vars
+  gather_facts: no
+  #  hosts: localhost
+  # connection: local
+  hosts: local-db
+  become: true
+  roles:
+    - role: host-vars

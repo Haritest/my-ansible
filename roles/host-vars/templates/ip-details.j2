@@ -1,0 +1,6 @@
+tomcat: {{ hostvars.tomcat }}
+
+seeds: "{{groups['db'][:2]|join(',')}}"
+{# listen_address: {{hostvars[inventory_hostname]['ansible_default_ipv4']['address']}} #}
+
+listen_address: {{hostvars[inventory_hostname]}}
