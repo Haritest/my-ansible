@@ -1,0 +1,17 @@
+---
+# tasks file for cronjobs
+#
+ - name: when-state
+   stat:
+      path: "/tmp/{{ test }}.txt"
+   register: file_details
+
+ - name: if file exists
+   debug:
+     msg: "the file or dir exist"
+   when: file_details.stat.exists 
+
+ - name: if file not exist
+   debug:
+     msg: "the file not exist"
+   when: not file_details.stat.exists

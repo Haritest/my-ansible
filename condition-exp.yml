@@ -1,0 +1,9 @@
+---
+- name: conditions example
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - role: condition-exp
+  vars:
+    test: 123
