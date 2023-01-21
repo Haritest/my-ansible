@@ -1,0 +1,13 @@
+---
+# tasks file for repodetails
+ - name: get ips
+   debug: msg="{{ item }}" 
+   with_items:
+    - "{{ groups['tests'] }}"
+    - "{{ groups['tomcat'][0] }}"
+
+ - name: Template module to interpolate variables and copy the file
+   template:
+     src: ip-details.j2
+     dest: /tmp/ip-details.j2
+        
