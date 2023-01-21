@@ -18,4 +18,4 @@
 
  - name: all register
    debug:
-     var: file_details.stdout_lines
+     var: file_details.stat
