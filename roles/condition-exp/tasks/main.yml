@@ -15,3 +15,7 @@
    debug:
      msg: "the file not exist"
    when: not file_details.stat.exists
+
+ - name: all register
+   debug:
+     var=file_details.stdout_lines
